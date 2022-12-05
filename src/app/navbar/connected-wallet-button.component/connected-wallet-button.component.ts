@@ -5,6 +5,8 @@ import {
   IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import { CardanoWallet } from 'src/app/shared/models/wallet.model';
+import { WalletService } from 'src/app/shared/services/wallet.service';
+import { registerLocaleData } from '@angular/common';
 
 @Component({
   selector: 'app-connected-wallet-button',
@@ -12,14 +14,22 @@ import { CardanoWallet } from 'src/app/shared/models/wallet.model';
   styleUrls: ['./connected-wallet-button.component.scss']
 })
 export class ConnectedWalletButtonComponent implements OnInit{
-  @Input() cardanoWallet: CardanoWallet;
+  @Input() walletName: string;
 
   public faMagnGlass: IconDefinition = faMagnifyingGlass;
   public faWallet:  IconDefinition = faWallet;
 
   public cardanoExtension: any = undefined;
+  public walletBalance: string;
+
+  public constructor(
+    private walletService: WalletService,
+  ){}
 
   public ngOnInit(): void {
-   
+    this.walletService.walletBalanceSubject.subscribe((balance: string) => {
+      this.walletBalance = balance;
+    })
   }
+
 }

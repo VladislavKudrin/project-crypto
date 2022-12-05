@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ConnectedWalletButtonComponent } from './navbar/connected-wallet-button.component/connected-wallet-button.component';
+import { WalletService } from './shared/services/wallet.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { ConnectedWalletButtonComponent } from './navbar/connected-wallet-button
     AppRoutingModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [WalletService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

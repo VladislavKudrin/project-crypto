@@ -15,7 +15,7 @@
         </a>
       </div>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="col-11">
+        <div class="col-9">
           <form class="input-group" role="search">
             <input class="form-control" type="search" placeholder="Search" aria-label="Search"  aria-describedby="button-addon2">
             <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
@@ -23,16 +23,18 @@
             </button>
           </form>
         </div>
-        <div class="col d-flex justify-content-end">
+        <div class="col d-flex justify-content-center">
           <div class="dropdown">
             <button class="btn btn-outline-secondary" 
-              style="--bs-btn-padding-x: 2.5rem;" 
+              style="--bs-btn-padding-x: 2.5rem; width: 250px;" 
               type="button" 
               data-bs-toggle="dropdown" 
               aria-expanded="false">
-              <fa-icon *ngIf="!cardanoWallet" [icon]="faWallet"></fa-icon>
-              <app-connected-wallet-button *ngIf="cardanoWallet" 
-                [cardanoWallet] = "cardanoWallet">
+              <div *ngIf="!cardanoWallet" class="btn-text">
+                Connect Wallet 
+                <fa-icon class="wallet-icon" [icon]="faWallet"></fa-icon>
+              </div>
+              <app-connected-wallet-button *ngIf="cardanoWallet" [walletName]="cardanoWallet.name">
               </app-connected-wallet-button>
             </button>
             <ul class="dropdown-menu dropdown-menu-end text-center" style="min-width: 100%;">

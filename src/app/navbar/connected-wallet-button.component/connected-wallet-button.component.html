@@ -1,4 +1,5 @@
 <div class="connected-wallet-btn">
-  <img *ngIf="cardanoWallet.name === 'nami'" src="https://static.jpgstoreapis.com/icons/nami.svg" alt="Logo" width="20" height="20">
-  <img *ngIf="cardanoWallet.name === 'flint'" src="https://static.jpgstoreapis.com/icons/flint.svg" alt="Logo" width="20" height="20">
+  <img *ngIf="walletName === 'nami'" src="https://static.jpgstoreapis.com/icons/nami.svg" alt="Logo" width="20" height="20">
+  <img *ngIf="walletName === 'flint'" src="https://static.jpgstoreapis.com/icons/flint.svg" alt="Logo" width="20" height="20">
+  <div class="wallet-balance">{{walletBalance}}</div>
 </div>
