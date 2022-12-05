@@ -32,4 +32,8 @@ export class ConnectedWalletButtonComponent implements OnInit{
     })
   }
 
+  public convertWalletBalance(walletBalance: string): number{
+    return (Number(walletBalance) * 10 **-6);
+  }
+
 }

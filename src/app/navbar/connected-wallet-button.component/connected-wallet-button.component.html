@@ -1,5 +1,5 @@
 <div class="connected-wallet-btn">
   <img *ngIf="walletName === 'nami'" src="https://static.jpgstoreapis.com/icons/nami.svg" alt="Logo" width="20" height="20">
   <img *ngIf="walletName === 'flint'" src="https://static.jpgstoreapis.com/icons/flint.svg" alt="Logo" width="20" height="20">
-  <div class="wallet-balance">{{walletBalance}}</div>
+  <div class="wallet-balance">{{convertWalletBalance(walletBalance)}}ADA</div>
 </div>

@@ -123,8 +123,8 @@ export class NavbarComponent implements OnInit{
 
   public updateWalletBalance = async () =>{
     try {
-      const walletBalance = await this.cardanoWallet.api.getBalance();
-      console.log(Value.from_bytes(Buffer.from(walletBalance, "hex")));
+      const walletBalanceCBOR = await this.cardanoWallet.api.getBalance();
+      const walletBalance = Value.from_bytes(Buffer.from(walletBalanceCBOR, "hex")).coin().to_str();
       this.walletService.walletBalanceSubject.next(
         walletBalance
       )
