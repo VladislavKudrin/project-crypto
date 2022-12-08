@@ -7,12 +7,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ConnectedWalletButtonComponent } from './navbar/connected-wallet-button.component/connected-wallet-button.component';
 import { WalletService } from './shared/services/wallet.service';
+import { AccountViewComponent } from './account-view/account-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ConnectedWalletButtonComponent
+    ConnectedWalletButtonComponent,
+    AccountViewComponent
   ],
   imports: [
     BrowserModule,

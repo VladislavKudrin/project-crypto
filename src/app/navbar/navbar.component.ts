@@ -99,6 +99,7 @@ export class NavbarComponent implements OnInit{
           name: "nami",
           api: res
         };
+        this.updateWallet(this.cardanoWallet);
         this.updateWalletBalance();
       }).catch(res => {
         
@@ -113,11 +114,16 @@ export class NavbarComponent implements OnInit{
           name: "flint",
           api: res
         };
+        this.updateWallet(this.cardanoWallet);
         this.updateWalletBalance();
       }).catch(res => {
         
       })
     }
+  }
+
+  public updateWallet(wallet: CardanoWallet): void {
+    this.walletService.walletSubject.next(wallet);
   }
 
 
