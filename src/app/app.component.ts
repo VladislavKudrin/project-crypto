@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CardanoWallet } from './shared/models/wallet.model';
 import { WalletService } from './shared/services/wallet.service';
 
@@ -16,9 +16,9 @@ export class AppComponent implements OnInit{
   ){};
 
   public ngOnInit(): void {
-    this.walletService.walletSubject.subscribe((wallet: CardanoWallet) => {
-      this.cardanoWallet = wallet;
-    })
+    // this.walletService.walletSubject.subscribe((wallet: CardanoWallet) => {
+    //   this.cardanoWallet = wallet;
+    // })
   }
 
 }
