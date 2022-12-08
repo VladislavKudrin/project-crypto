@@ -88,7 +88,7 @@ export class NavbarComponent implements OnInit{
           break;
       } 
     } else {
-      console.log("No extension detected") //do popup
+      console.log('Extension needed')
     }
   }
 

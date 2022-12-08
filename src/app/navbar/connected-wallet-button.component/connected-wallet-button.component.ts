@@ -6,7 +6,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { CardanoWallet } from 'src/app/shared/models/wallet.model';
 import { WalletService } from 'src/app/shared/services/wallet.service';
-import { registerLocaleData } from '@angular/common';
 
 @Component({
   selector: 'app-connected-wallet-button',
@@ -33,7 +32,7 @@ export class ConnectedWalletButtonComponent implements OnInit{
   }
 
   public convertWalletBalance(walletBalance: string): number{
-    return (Number(walletBalance) * 10 **-6);
+    return Math.round((Number(walletBalance) * 10 **-6));
   }
 
 }
