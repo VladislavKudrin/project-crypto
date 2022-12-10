@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { WalletService } from 'src/app/shared/services/wallet.service';
 
 @Component({
   selector: 'app-utxo-view',
@@ -6,14 +7,18 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./utxo-view.component.scss']
 })
 export class UtxoViewComponent implements OnInit{
- @Input() utxos;
+  
+  public utxos: any = [];
 
   public constructor(
-
+    private walletService: WalletService,
   ){}
 
   public ngOnInit(): void {
-    console.log(this.utxos)
+    this.walletService.utxosSubject.subscribe((utxos) => {
+      this.utxos = utxos;
+    })
   }
+
 
 }

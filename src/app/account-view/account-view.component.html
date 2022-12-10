@@ -1,4 +1,4 @@
-<div class="container pt-3" *ngIf="cardanoWallet">
+<div class="container pt-3">
   <div class="row justify-content-md-center">
     <div class="col-11">
       <nav>
@@ -11,10 +11,10 @@
       </nav>
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-utxo" role="tabpanel" aria-labelledby="nav-utxo-tab">
-          <app-utxo-view [utxos]="utxos"></app-utxo-view>
+          <app-utxo-view></app-utxo-view>
         </div>
         <div class="tab-pane fade" id="nav-assets" role="tabpanel" aria-labelledby="nav-assets-tab">
-          <app-assets-view [utxos]="utxos"></app-assets-view>
+          <app-assets-view></app-assets-view>
         </div>
         <div class="tab-pane fade" id="nav-send" role="tabpanel" aria-labelledby="nav-send-tab">...</div>
         <div class="tab-pane fade" id="nav-mint" role="tabpanel" aria-labelledby="nav-mint-tab">...</div>

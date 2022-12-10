@@ -56,8 +56,7 @@ export class NavbarComponent implements OnInit{
           name: "nami",
           api: res
         };
-        this.updateWallet(this.cardanoWallet);
-        this.updateWalletBalance();
+        this.walletService.updateWallet(this.cardanoWallet);
       }).catch(res => {
         
       })
@@ -71,28 +70,10 @@ export class NavbarComponent implements OnInit{
           name: "flint",
           api: res
         };
-        this.updateWallet(this.cardanoWallet);
-        this.updateWalletBalance();
+        this.walletService.updateWallet(this.cardanoWallet);
       }).catch(res => {
         
       })
-    }
-  }
-
-  public updateWallet(wallet: CardanoWallet): void {
-    this.walletService.walletSubject.next(wallet);
-  }
-
-
-  public updateWalletBalance = async () =>{
-    try {
-      const walletBalanceCBOR = await this.cardanoWallet.api.getBalance();
-      const walletBalance = Value.from_bytes(Buffer.from(walletBalanceCBOR, "hex")).coin().to_str();
-      this.walletService.walletBalanceSubject.next(
-        walletBalance
-      )
-    } catch(err) {
-      console.log(err);
     }
   }
 

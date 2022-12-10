@@ -4,7 +4,7 @@ import {
   faWallet,
   IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
-import { CardanoWallet } from 'src/app/shared/models/wallet.model';
+import { CardanoWallet, CardanoWalletBalance } from 'src/app/shared/models/wallet.model';
 import { WalletService } from 'src/app/shared/services/wallet.service';
 
 @Component({
@@ -26,8 +26,8 @@ export class ConnectedWalletButtonComponent implements OnInit{
   ){}
 
   public ngOnInit(): void {
-    this.walletService.walletBalanceSubject.subscribe((balance: string) => {
-      this.walletBalance = balance;
+    this.walletService.walletBalanceSubject.subscribe((balance: CardanoWalletBalance) => {
+      this.walletBalance = balance.coins;
     })
   }
 
