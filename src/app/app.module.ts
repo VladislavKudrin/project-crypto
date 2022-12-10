@@ -9,6 +9,7 @@ import { ConnectedWalletButtonComponent } from './navbar/connected-wallet-button
 import { WalletService } from './shared/services/wallet.service';
 import { AccountViewComponent } from './account-view/account-view.component';
 import { UtxoViewComponent } from './account-view/utxo-view/utxo-view.component';
+import { AssetsViewComponent } from './account-view/assets-view/assets-view.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { UtxoViewComponent } from './account-view/utxo-view/utxo-view.component'
     ConnectedWalletButtonComponent,
     AccountViewComponent,
     UtxoViewComponent,
+    AssetsViewComponent,
   ],
   imports: [
     BrowserModule,
