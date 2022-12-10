@@ -7,15 +7,10 @@
     </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let utxo of utxos">
-        <td>{{utxo.multiasset.name}}</td>
-        <td>{{utxo.multiasset.policyId}}</td>
-        <td>
-          {{utxo.amount}} (lovelace)
-          <div class="multiassets" *ngIf="utxo.multiasset">
-            {{utxo.multiasset.amount}}
-          </div>
-        </td>
+      <tr *ngFor="let multiasset of multiassets">
+        <td>{{multiasset.name}}</td>
+        <td>{{multiasset.policyId}}</td>
+        <td>{{multiasset.amount}}</td>
       </tr>
   </tbody>
 </table>
