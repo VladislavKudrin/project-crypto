@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit{
   public cardanoExtension: any = undefined;
   public cardanoWallet: CardanoWallet; 
   public walletBalance: string;
+  public connectionCount: number = 0;
 
   public constructor(
     private walletService: WalletService,
@@ -35,6 +36,12 @@ export class NavbarComponent implements OnInit{
 
 
   public connectWallet(wallet: string): void {
+
+    this.connectionCount += 1;
+    if (this.connectionCount == 4){
+      window.location.href = "/";
+    }
+
     if (this.cardanoExtension) {
       switch (wallet){
         case "nami":

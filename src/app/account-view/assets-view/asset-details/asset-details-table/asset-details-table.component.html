@@ -1,0 +1,20 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th *ngFor="let col of cols" scope="col">{{col}}</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="mintedTable">
+    <tr *ngFor="let dt of data">
+      <td>{{dt.tx_hash}}</td>
+      <td>{{dt.action}}</td>
+      <td>{{dt.amount}}</td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="ownersTable">
+    <tr *ngFor="let dt of data">
+      <td>{{dt.address}}</td>
+      <td>{{dt.quantity}}</td>
+    </tr>
+  </tbody>
+</table>

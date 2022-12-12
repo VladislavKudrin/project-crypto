@@ -8,7 +8,7 @@
   </thead>
   <tbody>
       <tr *ngFor="let multiasset of multiassets">
-        <td>{{multiasset.name}}</td>
+        <td><a class="link-to-asset" (click)="openDialog(multiasset.policyId, multiasset.name)">{{multiasset.name}}</a></td>
         <td>{{multiasset.policyId}}</td>
         <td>{{multiasset.amount}}</td>
       </tr>

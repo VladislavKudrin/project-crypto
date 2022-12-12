@@ -37,4 +37,16 @@ export class BlockfrostService{
       this.httpOptions);
   }
 
+  public getAssetHistory(requestBody){
+    return this.http.get<any>(
+      `https://cardano-preprod.blockfrost.io/api/v0/assets/${requestBody}/history`, 
+      this.httpOptions);
+  }
+
+  public getAssetOwners(requestBody){
+    return this.http.get<any>(
+      `https://cardano-preprod.blockfrost.io/api/v0/assets/${requestBody}/addresses`, 
+      this.httpOptions);
+  }
+
 }

@@ -100,9 +100,14 @@ export class SendTransactionViewComponent implements OnInit{
         transactionWitnessSet
       );
 
-      const txResult = await cardanoWallet.api.submitTx(Buffer.from(signedTx.to_bytes()).toString("hex"))
-      this.walletService.refreshWallet();
-      this.transactionForm.reset();
+      const txResult = await cardanoWallet.api.submitTx(Buffer.from(signedTx.to_bytes()).toString("hex")).then(
+        res => {
+          this.walletService.refreshWallet();
+          this.transactionForm.reset();
+        }).catch(err => {
+          console.log(err)
+        })
+
 
       // this.blockfrostService.postSignedTransaction(signedTx.to_bytes()).subscribe(data => {
       //   console.log(data)

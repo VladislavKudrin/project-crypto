@@ -1,0 +1,28 @@
+
+.asset-dialog-title {
+  color: black;
+}
+
+.card-text {
+    color: black;
+}
+
+.card-text-title {
+  margin-bottom: 0;
+  font-size: large;
+}
+
+.card-text-description {
+  font-size: small;
+}
+
+.button-close {
+  margin-top: 10%;
+}
+
+
+::ng-deep .custom-modalbox {
+    .mat-mdc-dialog-surface {
+        background-color: #e3f2fd;
+    }
+  }

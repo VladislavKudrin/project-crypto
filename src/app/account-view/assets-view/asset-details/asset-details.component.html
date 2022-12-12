@@ -1,0 +1,50 @@
+<h2 class="asset-dialog-title text-center" mat-dialog-title>{{data.assetName}}</h2>
+<mat-dialog-content class="asset-dialog-content">
+  <div class="container">
+    <div *ngIf="assetMetadata" class="row justify-content-md-center">
+      <div class="col-sm-4">
+        <div class="card" style="width: 100%;">
+          <img src="https://ipfs.io/ipfs/{{assetData.onchain_metadata.image}}" 
+            class="card-img-top">
+          <div class="card-body">
+            <h3 class="card-text card-text-title">
+              {{assetData.onchain_metadata.name}}
+            </h3>
+            <p class="card-text card-text-description">
+              {{assetData.onchain_metadata.description}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <nav>
+          <div class="nav nav-tabs justify-content-md-center mt-3" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Mints</button>
+            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Owners</button>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+            <app-asset-details-table
+              [cols] = "mintsCols"
+              [data] = "mintsData"
+              [mintedTable]="true"
+            ></app-asset-details-table>
+          </div>
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+            <app-asset-details-table
+              [cols] = "ownersCols"
+              [data] = "ownersData"
+              [ownersTable]="true"
+          ></app-asset-details-table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align=end class="button-close">
+  <button class="btn btn-danger" mat-dialog-close>Close</button>
+</mat-dialog-actions>

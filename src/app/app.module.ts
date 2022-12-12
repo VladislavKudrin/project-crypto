@@ -10,6 +10,16 @@ import { WalletService } from './shared/services/wallet.service';
 import { AccountViewComponent } from './account-view/account-view.component';
 import { UtxoViewComponent } from './account-view/utxo-view/utxo-view.component';
 import { AssetsViewComponent } from './account-view/assets-view/assets-view.component';
+import { SendTransactionViewComponent } from './account-view/send-transaction-view/send-transaction-view.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BlockfrostService } from './shared/services/blockfrost.service';
+import { AssetDetailsComponent } from './account-view/assets-view/asset-details/asset-details.component';
+import { AssetDetailsTableComponent } from './account-view/assets-view/asset-details/asset-details-table/asset-details.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -19,13 +29,25 @@ import { AssetsViewComponent } from './account-view/assets-view/assets-view.comp
     AccountViewComponent,
     UtxoViewComponent,
     AssetsViewComponent,
+    SendTransactionViewComponent,
+    AssetDetailsComponent,
+    AssetDetailsTableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatFormFieldModule,
+    MatInputModule,
+    NoopAnimationsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatDialogModule
   ],
-  providers: [WalletService],
+  providers: [
+    WalletService,
+    BlockfrostService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
