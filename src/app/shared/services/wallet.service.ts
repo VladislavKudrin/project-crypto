@@ -3,7 +3,9 @@ import { Buffer } from 'buffer';
 import { Subject } from 'rxjs';
 import { 
   Value,
-  TransactionUnspentOutput
+  TransactionUnspentOutput,
+  Address,
+  TransactionUnspentOutputs
  } from "@emurgo/cardano-serialization-lib-asmjs"
 
 import { CardanoWallet, CardanoWalletBalance } from '../models/wallet.model';
@@ -13,34 +15,68 @@ export class WalletService {
 
   public walletBalanceSubject: Subject<CardanoWalletBalance> = new Subject<CardanoWalletBalance>();
   public walletSubject: Subject<CardanoWallet> = new Subject<CardanoWallet>();
+  public walletAddressSubject: Subject<string> = new Subject<string>();
   public utxosSubject: Subject<any> = new Subject<any>();
 
   public walletBalance: CardanoWalletBalance;
   public cardanoWallet: CardanoWallet;
-  public utxos: any;
+  public walletAddress: string;
+  public utxos: any = [];
 
   public constructor(){}
 
-  public getWalletBalance(): CardanoWalletBalance {
+  public async getWalletBalance(): Promise<CardanoWalletBalance> {
     return this.walletBalance;
   }
   
-  public getWallet(): CardanoWallet {
+  public async getWallet(): Promise<CardanoWallet> {
     return this.cardanoWallet;
   }
 
-  public getUTXOs(): any {
-    return this.utxos;
+  public async getWalletAddress(): Promise<any> {
+    return this.walletAddress;
   }
 
-  public updateWallet(wallet: CardanoWallet): void {
+  public async getUnspentOutputs(): Promise<any> {
+    let txOutputs = TransactionUnspentOutputs.new();
+    for (const utxo of this.utxos) {
+      txOutputs.add(utxo.TransactionUnspentOutput)
+    }
+    console.log(this.utxos)
+    return txOutputs;
+  }
+
+  public async updateWallet(wallet: CardanoWallet) {
     this.cardanoWallet = wallet;
     this.walletSubject.next(this.cardanoWallet);
-    this.updateWalletBalance();
-    this.updateUTXOs();
+    await this.updateWalletBalance();
+    await this.updateWalletAddress();
+    await this.updateUTXOs();
   }
 
-  public updateWalletBalance = async () =>{
+  public async refreshWallet() {
+    (<any>window).cardano.nami.enable().then(res => {
+      this.cardanoWallet = {
+        name: "nami",
+        api: res
+      };
+      this.updateWallet(this.cardanoWallet);
+    }).catch(res => {
+      
+    })
+  }
+
+  public async updateWalletAddress() {
+    try {
+      const raw = await this.cardanoWallet.api.getChangeAddress();
+      this.walletAddress = Address.from_bytes(Buffer.from(raw, "hex")).to_bech32();
+      this.walletAddressSubject.next(this.walletAddress);
+    } catch (err) {
+        console.log(err)
+    }
+  }
+
+  public async updateWalletBalance() {
     try {
       const walletBalanceCBOR = await this.cardanoWallet.api.getBalance();
       const coins = Value.from_bytes(Buffer.from(walletBalanceCBOR, "hex")).coin().to_str();
@@ -87,7 +123,7 @@ export class WalletService {
     }
   }
 
-  public updateUTXOs = async () =>{
+  public async updateUTXOs() {
     this.utxos = [];
     try {
       const rawUtxos = await this.cardanoWallet.api.getUtxos()

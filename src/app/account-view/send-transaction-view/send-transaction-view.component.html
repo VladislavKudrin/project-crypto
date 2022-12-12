@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <form class="transaction-form text-center" 
+        id="transaction-form" 
+        [formGroup]="transactionForm"
+        (ngSubmit)="submitTransaction()">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Recipient address</label>
+          <input type="text" class="form-control" 
+            id="exampleFormControlInput1" 
+            placeholder="Cardano wallet address" 
+            formControlName="toAddress">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput2" class="form-label">Amount</label>
+          <input type="number" class="form-control" 
+            id="exampleFormControlInput2" 
+            placeholder="ADA amount" 
+            formControlName="amount">
+        </div>
+      </form>
+    </div>
+    <div class="col-3 align-self-center text-center d-grid gap-2 mt-4">
+      <button type="submit" class="btn btn-success" 
+        form="transaction-form"
+        [disabled]="!transactionForm.valid">
+        Send
+      </button>
+    </div>
+  </div>
+</div>
+
