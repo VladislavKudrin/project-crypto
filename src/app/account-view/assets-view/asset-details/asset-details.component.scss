@@ -17,12 +17,16 @@
 }
 
 .button-close {
-  margin-top: 10%;
+  //margin-top: 10%;
 }
 
+.black-font {
+  color: black;
+}
 
 ::ng-deep .custom-modalbox {
     .mat-mdc-dialog-surface {
         background-color: #e3f2fd;
+        height: 85%;
     }
   }

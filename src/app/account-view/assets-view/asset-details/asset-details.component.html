@@ -1,5 +1,5 @@
 <h2 class="asset-dialog-title text-center" mat-dialog-title>{{data.assetName}}</h2>
-<mat-dialog-content class="asset-dialog-content">
+<mat-dialog-content class="asset-dialog-content margin-bottom-10">
   <div class="container">
     <div *ngIf="assetMetadata" class="row justify-content-md-center">
       <div class="col-sm-4">
@@ -23,6 +23,7 @@
           <div class="nav nav-tabs justify-content-md-center mt-3" id="nav-tab" role="tablist">
             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Mints</button>
             <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Owners</button>
+            <button class="nav-link" id="nav-metadata-tab" data-bs-toggle="tab" data-bs-target="#nav-metadata" type="button" role="tab" aria-controls="nav-metadata" aria-selected="false">Metadata</button>
           </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
@@ -39,6 +40,14 @@
               [data] = "ownersData"
               [ownersTable]="true"
           ></app-asset-details-table>
+          </div>
+          <div class="tab-pane fade black-font" id="nav-metadata" role="tabpanel" aria-labelledby="nav-metadata-tab" tabindex="0">
+            <app-metadata-table 
+              *ngIf="assetMetadata"
+              [data] = "assetData"
+            ></app-metadata-table>
+            <div *ngIf="!assetMetadata">No metadata available for this asset...</div>
+              <!-- <div style="color: black;" *ngIf="assetMetadata">{{newMetadata}}</div> -->
           </div>
         </div>
       </div>

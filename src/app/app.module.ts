@@ -18,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BlockfrostService } from './shared/services/blockfrost.service';
 import { AssetDetailsComponent } from './account-view/assets-view/asset-details/asset-details.component';
-import { AssetDetailsTableComponent } from './account-view/assets-view/asset-details/asset-details-table/asset-details.component';
+import { AssetDetailsTableComponent } from './account-view/assets-view/asset-details/asset-details-table/asset-details-table.component';
+import { MetadataTableComponent } from './account-view/assets-view/asset-details/matadata-table/metadata-table.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
@@ -31,7 +32,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     AssetsViewComponent,
     SendTransactionViewComponent,
     AssetDetailsComponent,
-    AssetDetailsTableComponent
+    AssetDetailsTableComponent,
+    MetadataTableComponent
   ],
   imports: [
     BrowserModule,

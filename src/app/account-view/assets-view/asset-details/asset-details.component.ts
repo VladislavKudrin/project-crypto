@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 
 
 
+
 @Component({
   selector: 'app-asset-details',
   templateUrl: 'asset-details.component.html',
@@ -21,6 +22,7 @@ export class AssetDetailsComponent implements OnInit, OnDestroy{
   public mintsData;
   public ownersCols = ["Address", "Quantity"];
   public ownersData;
+  public newMetadata;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {
@@ -37,6 +39,7 @@ export class AssetDetailsComponent implements OnInit, OnDestroy{
       this.assetData = res;
       if (res.onchain_metadata){
         this.assetMetadata = res.onchain_metadata;
+        this.newMetadata = JSON.stringify(this.assetMetadata);
       }
       })
     )
